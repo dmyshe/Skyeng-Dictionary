@@ -35,7 +35,6 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupUserInterface()
         makeConstraints()
         viewModel.delegate = self
