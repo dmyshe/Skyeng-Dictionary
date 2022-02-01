@@ -10,7 +10,7 @@ class TranslationViewModel {
     
     public func getTranslationAndTranscription( in indexPath: Int) -> (text: String, transcription: String) {
         let text = meaning[indexPath].translation.text
-        let transcription = meaning[indexPath].transcription ?? "груша"
+        let transcription = meaning[indexPath].transcription ?? ""
         return (text, transcription)
     }
     
