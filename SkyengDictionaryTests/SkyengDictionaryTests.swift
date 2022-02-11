@@ -3,7 +3,7 @@ import XCTest
 
 class ServiceManagerMock: ServiceManagerProtocol {
     var isCalled = false
-    func search(word: String, then handler: @escaping (Result<[Translate],TranslateError>) -> Void) {
+    func search(word: String, then handler: @escaping (Handler) -> Void) {
         isCalled = true
     }
 }
