@@ -8,14 +8,12 @@ class MeaningCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -35,8 +33,8 @@ class MeaningCell: UITableViewCell {
     }
     
     private func setupUserInterface() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(subtitleLabel)
+        contentView.addSubviewForAutoLayout(titleLabel)
+        contentView.addSubviewForAutoLayout(subtitleLabel)
     }
     
     private func makeConstraints() {

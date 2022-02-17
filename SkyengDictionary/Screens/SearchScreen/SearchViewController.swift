@@ -12,7 +12,6 @@ class SearchViewController: UIViewController {
         searchTextField.borderStyle = .roundedRect
         searchTextField.clearButtonMode = .whileEditing
         searchTextField.delegate = self
-        searchTextField.translatesAutoresizingMaskIntoConstraints = false
         return searchTextField
     }()
     
@@ -20,7 +19,6 @@ class SearchViewController: UIViewController {
         let button = UIButton()
         let image = Constants.UI.Images.cameraIcon
         button.setBackgroundImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -29,7 +27,6 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
@@ -48,9 +45,9 @@ class SearchViewController: UIViewController {
 
     private func setupUserInterface() {
         view.backgroundColor = .systemBackground
-        view.addSubview(searchTextField)
-        view.addSubview(cameraIconButton)
-        view.addSubview(tableView)
+        view.addSubviewForAutoLayout(searchTextField)
+        view.addSubviewForAutoLayout(cameraIconButton)
+        view.addSubviewForAutoLayout(tableView)
     }
     
     private func makeConstraints() {
