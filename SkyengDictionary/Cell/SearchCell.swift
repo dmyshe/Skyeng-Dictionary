@@ -8,14 +8,12 @@ class SearchCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -23,7 +21,6 @@ class SearchCell: UITableViewCell {
         let image = Constants.UI.Images.starIcon
         let imageView = UIImageView(image: image)
         imageView.isHidden = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
@@ -31,7 +28,6 @@ class SearchCell: UITableViewCell {
         let label = UILabel()
         label.text = "0"
         label.textColor = .systemGray2
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -39,7 +35,6 @@ class SearchCell: UITableViewCell {
         let soundIconButton = UIButton()
         let soundIconImage = Constants.UI.Images.speakerIcon
         soundIconButton.setBackgroundImage(soundIconImage, for: .normal)
-        soundIconButton.translatesAutoresizingMaskIntoConstraints = false
         soundIconButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
         return soundIconButton
     }()
@@ -48,8 +43,9 @@ class SearchCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [soundIconButton,
                                                    countClickLabel])
         stack.distribution = .fillEqually
+
+        stack.spacing = 16
         stack.spacing = Constants.UI.Layout.defaultOffset
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -60,7 +56,6 @@ class SearchCell: UITableViewCell {
         stack.spacing = 4
         stack.distribution = .equalCentering
         stack.alignment = .leading
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -93,9 +88,10 @@ class SearchCell: UITableViewCell {
     }
     
     private func setupUserInterface() {
-        contentView.addSubview(cellContentStackView)
-        contentView.addSubview(starImage)
-        contentView.addSubview(infoStackView)
+        contentView.addSubviewForAutoLayout(titleLabel)
+        contentView.addSubviewForAutoLayout(subtitleLabel)
+        contentView.addSubviewForAutoLayout(starImage)
+        contentView.addSubviewForAutoLayout(infoStackView)
     }
 
     private func makeConstraints() {

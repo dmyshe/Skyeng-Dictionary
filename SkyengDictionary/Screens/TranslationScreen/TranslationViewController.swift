@@ -7,7 +7,6 @@ class TranslationViewController: UIViewController {
     // MARK: Views
     private lazy var imageView: UIImageView = {
         let imageContainter = UIImageView()
-        imageContainter.translatesAutoresizingMaskIntoConstraints = false
         return imageContainter
     }()
     
@@ -17,7 +16,6 @@ class TranslationViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(MeaningCell.self, forCellReuseIdentifier: MeaningCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
@@ -45,8 +43,8 @@ class TranslationViewController: UIViewController {
     
     private func setupUserInterface() {
         view.backgroundColor = .systemBackground
-        view.addSubview(imageView)
-        view.addSubview(tableView)
+        view.addSubviewForAutoLayout(imageView)
+        view.addSubviewForAutoLayout(tableView)
     }
     
     private func makeConstraints() {

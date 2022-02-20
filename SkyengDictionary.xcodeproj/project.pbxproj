@@ -27,6 +27,7 @@
 		3228641227A179E200285609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3228641127A179E200285609 /* Constants.swift */; };
 		3228641427A17A1B00285609 /* LocalizeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3228641327A17A1B00285609 /* LocalizeStrings.swift */; };
 		3228641A27A17AC000285609 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3228641C27A17AC000285609 /* Localizable.strings */; };
+		32CE7BAC27BEEF240093A475 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE7BAB27BEEF240093A475 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		3228641927A17AB400285609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3228641B27A17AC000285609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3228641D27A17AC200285609 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		32CE7BAB27BEEF240093A475 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				3228640F27A179D100285609 /* String+localized.swift */,
 				3228641127A179E200285609 /* Constants.swift */,
 				3228641327A17A1B00285609 /* LocalizeStrings.swift */,
+				32CE7BAB27BEEF240093A475 /* Extensions.swift */,
 			);
 			path = Uttility;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				3228640A27A1791F00285609 /* URLSession+ dataTask(handler).swift in Sources */,
 				322863FA27A1775C00285609 /* Meanings.swift in Sources */,
 				3228641427A17A1B00285609 /* LocalizeStrings.swift in Sources */,
+				32CE7BAC27BEEF240093A475 /* Extensions.swift in Sources */,
 				322863BA27A1763B00285609 /* AppDelegate.swift in Sources */,
 				3228640C27A1793D00285609 /* ServiceManager.swift in Sources */,
 			);
