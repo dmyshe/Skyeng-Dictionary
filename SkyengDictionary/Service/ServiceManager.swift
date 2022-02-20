@@ -13,10 +13,10 @@ class ServiceManager: ServiceManagerProtocol {
     
     var session = URLSession.shared
     
-    func search(word: String, then handler: @escaping (Handler) -> Void) {
+    func search(word: String, then completion: @escaping (TranslateHandler) -> Void) {
         
         guard let url = URL(string: "\(baseUrl)\(searchMethod)?search=\(word)") else {
-            handler(.failure(.urlError))
+            completion(.failure(.urlError))
             return
         }
         
@@ -25,12 +25,12 @@ class ServiceManager: ServiceManagerProtocol {
             case .success(let data):
                 do {
                     let translate = try JSONDecoder().decode([Translate].self, from: data)
-                    handler(.success(translate))
+                    completion(.success(translate))
                 } catch {
-                    handler(.failure(.invalidData))
+                    completion(.failure(.invalidData))
                 }
             case .failure(let error):
-                handler(.failure(.networkFailure(error)))
+                completion(.failure(.networkFailure(error)))
             }
         }
         task.resume()

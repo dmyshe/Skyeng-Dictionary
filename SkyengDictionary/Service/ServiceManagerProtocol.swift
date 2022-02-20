@@ -1,6 +1,6 @@
 import Foundation
 
 protocol ServiceManagerProtocol {
-    typealias Handler = Result<[Translate],TranslateError>
-    func search(word: String, then handler: @escaping (Handler) -> Void)
+    typealias TranslateHandler = Result<[Translate],TranslateError>
+    func search(word: String, then completion: @escaping (TranslateHandler) -> Void)
 }
