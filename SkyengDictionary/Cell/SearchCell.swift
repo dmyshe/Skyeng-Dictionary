@@ -81,15 +81,13 @@ class SearchCell: UITableViewCell {
         print("tap")
     }
     
-    
     public func configureCell(text: String, translation: String) {
         titleLabel.text = text
         subtitleLabel.text = translation
     }
     
     private func setupUserInterface() {
-        contentView.addSubviewForAutoLayout(titleLabel)
-        contentView.addSubviewForAutoLayout(subtitleLabel)
+        contentView.addSubviewForAutoLayout(cellContentStackView)
         contentView.addSubviewForAutoLayout(starImage)
         contentView.addSubviewForAutoLayout(infoStackView)
     }
