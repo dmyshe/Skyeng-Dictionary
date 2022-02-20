@@ -13,7 +13,7 @@ class ServiceManager: ServiceManagerProtocol {
     
     var session = URLSession.shared
     
-    func search(word: String, then completion: @escaping (TranslateHandler) -> Void) {
+    func search(word: String, then completion: @escaping TranslateHandler) {
         
         guard let url = URL(string: "\(baseUrl)\(searchMethod)?search=\(word)") else {
             completion(.failure(.urlError))
