@@ -17,10 +17,24 @@ struct Constants {
                                     withConfiguration: configuration)!.withTintColor(.systemPink, renderingMode: .alwaysOriginal)
                 return image
             }()
+            
+            static let speakerIcon = UIImage(systemName: "speaker.2.fill")!.withTintColor(.black,renderingMode: .alwaysOriginal)
+            
+            static let starIcon2 = UIImage(systemName: "star.fill")!
+            static let clockIcon = UIImage(systemName: "star.fill")!
+            static let trashIcon = UIImage(systemName: "trash.fill")!
+
         }
+        
         
         struct Layout {
             static let defaultPadding: CGFloat = 16
+            static let defaultOffset : CGFloat = 8
+
+            static let imageViewHeight: CGFloat = 100
+            static let imageViewWidth: CGFloat = 100
+            
+            static let contentSpacing: CGFloat = 4
         }
     }
     

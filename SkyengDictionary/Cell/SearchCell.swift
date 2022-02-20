@@ -33,7 +33,7 @@ class SearchCell: UITableViewCell {
     
     private lazy var  soundIconButton: UIButton = {
         let soundIconButton = UIButton()
-        let soundIconImage = UIImage(systemName: "speaker.2.fill")?.withTintColor(.black,renderingMode: .alwaysOriginal)
+        let soundIconImage = Constants.UI.Images.speakerIcon
         soundIconButton.setBackgroundImage(soundIconImage, for: .normal)
         soundIconButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
         return soundIconButton
@@ -43,7 +43,19 @@ class SearchCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [soundIconButton,
                                                    countClickLabel])
         stack.distribution = .fillEqually
+
         stack.spacing = 16
+        stack.spacing = Constants.UI.Layout.defaultOffset
+        return stack
+    }()
+    
+    private lazy var cellContentStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [titleLabel,
+                                                   subtitleLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.distribution = .equalCentering
+        stack.alignment = .leading
         return stack
     }()
     
@@ -83,16 +95,12 @@ class SearchCell: UITableViewCell {
     }
 
     private func makeConstraints() {
-
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor , constant: Constants.UI.Layout.defaultPadding),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10 ),
+            cellContentStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor , constant: Constants.UI.Layout.defaultPadding),
+            cellContentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.UI.Layout.defaultOffset),
+            cellContentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.UI.Layout.defaultOffset),
 
-            subtitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.UI.Layout.defaultPadding),
-            subtitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 10),
-
-            starImage.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 10),
+            starImage.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: Constants.UI.Layout.defaultOffset),
             starImage.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
 
             infoStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.UI.Layout.defaultPadding),

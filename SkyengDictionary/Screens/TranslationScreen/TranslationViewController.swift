@@ -33,10 +33,10 @@ class TranslationViewController: UIViewController {
     
     private func configureImage() {
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let imageData = self.viewModel.getImage(url: self.viewModel.imageURL ?? "") else { return }
-           
+            guard let imageData = self.viewModel.getImageData(from: self.viewModel.imageURL ?? "") else { return }
+
             DispatchQueue.main.async {
-                self.imageView.image =  imageData
+                self.imageView.image =  UIImage(data: imageData)
             }
         }
     }
@@ -50,12 +50,12 @@ class TranslationViewController: UIViewController {
     private func makeConstraints() {
      
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 18),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: Constants.UI.Layout.defaultPadding),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 100),
-            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.heightAnchor.constraint(equalToConstant: Constants.UI.Layout.imageViewHeight),
+            imageView.widthAnchor.constraint(equalToConstant: Constants.UI.Layout.imageViewWidth),
   
-            tableView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 30),
+            tableView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: Constants.UI.Layout.defaultPadding),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -63,9 +63,9 @@ class TranslationViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDataSource
 
-extension TranslationViewController: UITableViewDelegate, UITableViewDataSource {
+extension TranslationViewController:  UITableViewDataSource {
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.meaning.count
@@ -87,6 +87,11 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+}
+
+// MARK: - UITableViewDelegate
+extension TranslationViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedRow = viewModel.selectedIndex {
             viewModel.previousSelectedIndex = selectedRow
@@ -99,4 +104,5 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.reloadRows(at: indexes, with: .automatic)
         tableView.layoutIfNeeded()
     }
+
 }

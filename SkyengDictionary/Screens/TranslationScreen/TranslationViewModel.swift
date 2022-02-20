@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 class TranslationViewModel {
     
@@ -10,15 +9,12 @@ class TranslationViewModel {
     
     public func getTranslationAndTranscription( in indexPath: Int) -> (text: String, transcription: String) {
         let text = meaning[indexPath].translation.text
-        let transcription = meaning[indexPath].transcription ?? "груша"
+        let transcription = meaning[indexPath].transcription ?? ""
         return (text, transcription)
     }
     
-    func getImage(url: String) -> UIImage? {
-        if let url = URL(string: "https:\(url)"), let data = try? Data(contentsOf: url) {
-              return UIImage(data: data)
-          } else {
-              return nil
-          }
+    func getImageData(from url: String) -> Data? {
+        guard let url = URL(string: "https:\(url)"), let data = try? Data(contentsOf: url) else { return nil }
+        return data
     }
 }

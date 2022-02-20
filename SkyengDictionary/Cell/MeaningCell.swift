@@ -17,6 +17,15 @@ class MeaningCell: UITableViewCell {
         return label
     }()
 
+    private lazy var cellContentStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [titleLabel,
+                                                   subtitleLabel])
+        stack.axis = .vertical
+        stack.spacing = Constants.UI.Layout.contentSpacing
+        stack.distribution = .equalCentering
+        stack.alignment = .leading
+        return stack
+    }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUserInterface()
@@ -35,17 +44,14 @@ class MeaningCell: UITableViewCell {
     private func setupUserInterface() {
         contentView.addSubviewForAutoLayout(titleLabel)
         contentView.addSubviewForAutoLayout(subtitleLabel)
+        contentView.addSubviewForAutoLayout(cellContentStackView)
     }
     
     private func makeConstraints() {
-        
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor , constant: Constants.UI.Layout.defaultPadding),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10 ),
-     
-            subtitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.UI.Layout.defaultPadding),
-            subtitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 10)
+            cellContentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.UI.Layout.defaultOffset),
+            cellContentStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor , constant: Constants.UI.Layout.defaultPadding),
+            cellContentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.UI.Layout.defaultOffset)
         ])
     }
 }
