@@ -4,7 +4,7 @@ class TranslationViewController: UIViewController {
     
     var viewModel = TranslationViewModel()
     
-    // MARK: Views
+    // MARK: -  Views
     private lazy var imageView: UIImageView = {
         let imageContainter = UIImageView()
         return imageContainter
@@ -18,7 +18,7 @@ class TranslationViewController: UIViewController {
         tableView.register(MeaningCell.self, forCellReuseIdentifier: MeaningCell.identifier)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUserInterface()
@@ -34,7 +34,7 @@ class TranslationViewController: UIViewController {
     private func configureImage() {
         DispatchQueue.global(qos: .userInitiated).async {
             guard let imageData = self.viewModel.getImageData(from: self.viewModel.imageURL ?? "") else { return }
-
+            
             DispatchQueue.main.async {
                 self.imageView.image =  UIImage(data: imageData)
             }
@@ -48,13 +48,13 @@ class TranslationViewController: UIViewController {
     }
     
     private func makeConstraints() {
-     
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: Constants.UI.Layout.defaultPadding),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: Constants.UI.Layout.imageViewHeight),
             imageView.widthAnchor.constraint(equalToConstant: Constants.UI.Layout.imageViewWidth),
-  
+            
             tableView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: Constants.UI.Layout.defaultPadding),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -66,7 +66,7 @@ class TranslationViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension TranslationViewController:  UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.meaning.count
     }
@@ -104,5 +104,5 @@ extension TranslationViewController: UITableViewDelegate {
         tableView.reloadRows(at: indexes, with: .automatic)
         tableView.layoutIfNeeded()
     }
-
+    
 }

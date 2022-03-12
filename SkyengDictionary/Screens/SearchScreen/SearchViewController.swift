@@ -4,7 +4,7 @@ class SearchViewController: UIViewController {
     
     var viewModel = SearchViewModel()
     
-    // MARK: Views
+    // MARK: - Views
     private lazy var searchTextField: UITextField = {
         let searchTextField = UITextField()
         searchTextField.placeholder = LocalizeStrings.SearchScreen.search
@@ -66,14 +66,14 @@ class SearchViewController: UIViewController {
     }
 }
 
-// MARK: SearchViewModelDelegate
+// MARK: - SearchViewModelDelegate
 extension SearchViewController: SearchViewModelDelegate {
     func reloadData() {
         tableView.reloadData()
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -91,7 +91,7 @@ extension SearchViewController: UITextFieldDelegate {
     }
 }
 
-// MARK:  UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension SearchViewController:  UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +112,7 @@ extension SearchViewController:  UITableViewDataSource  {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
